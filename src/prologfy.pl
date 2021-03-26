@@ -2,6 +2,17 @@
 :- [musics].
 :- [api].
 
+albunsArtista:-
+	read_atom_with_message('Insira o nome do artista', AlbumArtista),
+	findall(Album, (album(Album, Artista, _), percorreLista(AlbumArtista, Artista))
+		,AlbumList),
+	write('O artista '), 
+	write(AlbumArtista), 
+	(length(AlbumList, 0) 
+		-> write(' não possui álbuns cadastrados.')
+		;  write(' tem os álbuns '), write_ln(AlbumList)
+	).
+
 musicasGenero:-
 	read_atom_with_message('Insira o nome do gênero', GeneroToFind),
 	findall(Musica, (music(Musica, Genero, _), percorreLista(GeneroToFind, Genero))
@@ -15,10 +26,10 @@ musicasGenero:-
 
 musicasArtista:-
 	read_atom_with_message('Insira o nome do artista', Artista),
-	findall(Album, album(Album, Artista, _), AlbumList),
-	(length(AlbumList, 0)
+	findall(Album, album(Album, Artista, _), MusicList),
+	(length(MusicList, 0)
 		-> write('Não possui álbuns cadastrados'), fail
-		; albunsArtista(AlbumList)
+		; albunsArtista(MusicList)
 	).
 
 albunsArtista([]). 

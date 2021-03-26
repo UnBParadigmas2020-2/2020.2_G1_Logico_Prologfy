@@ -45,6 +45,7 @@ handle_search:-
     write_ln('[3] - Buscar músicas de um ano'),
     write_ln('[4] - Buscar gêneros musicais de um artista'),
     write_ln('[5] - Buscar músicas por gênero'),
+    write_ln('[6] - Buscar álbuns por artista'),
     read_string(user, "\n", "\r", _, Option),
     switch(
         Option, 
@@ -53,7 +54,8 @@ handle_search:-
             "2" : musicasAlbum(),
             "3" : musicasAno(),
             "4" : artistasGenero(),
-            "5" : musicasGenero()
+            "5" : musicasGenero(),
+            "6" : albunsArtista()
         ],
         main
     ).
