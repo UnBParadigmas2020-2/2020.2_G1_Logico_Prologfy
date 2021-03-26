@@ -1,7 +1,7 @@
 :- [api].
 :- [utils].
 
-table(music(nome : atom, artista : atom, genero : atom)).
+table(music(nome : atom, genero : [atom] , genero : atom)).
 
 :- dynamic music/3.
 
