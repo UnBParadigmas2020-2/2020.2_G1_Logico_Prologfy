@@ -2,4 +2,4 @@ FROM swipl
 
 COPY . ./
 
-CMD ["swipl", "/src/prologfy.pl"]
+CMD ["swipl", "/main.pl"]
