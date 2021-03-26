@@ -4,7 +4,7 @@
 :- [api].
 
 musicasGenero(GeneroToFind):-
-	findall(Musica, (musics(Musica, Genero, _, _), percorreLista(GeneroToFind, Genero))
+	findall(Musica, (music(Musica, Genero, _, _), percorreLista(GeneroToFind, Genero))
 		,MusicList),
 	write('O genero '), 
 	write(GeneroToFind), 
@@ -12,12 +12,27 @@ musicasGenero(GeneroToFind):-
 	-> write(' não possui músicas cadastradas.')
 	;  write(' tem as musicas '), write(MusicList)).
 
-musicasArtista(Artista):-
-	findall(Musica,musics(Musica, Artista, _, _),Lista),
-	write('O genero '), 
-	write(Artista), 
-	write(' tem as musicas '),
-	write(Lista).
+
+%musicasArtista(Artista):-
+%	findall(Musica, 
+%	music(Musica, _, _, percorreLista(findall(Album, album(Album, Artista, _), _)_)5
+%	),
+%	ListaMusica),
+%	write('O genero '), 
+%	write(Artista), 
+%	write(' tem as musicas '),
+%	write(ListaMusica).
+	
+musicasAlbum(Album):-
+	findall(Musica, music(Musica, _, _, Album), MusicList),
+	write('O Album '), 
+	write(Album), 
+	(length(MusicList, 0) 
+	-> write(' não possui músicas cadastradas.')
+	;  write(' tem as musicas '), write(MusicList)).
+	
+musicasAlbumT([]).	
+musicasAlbumT([H|T]):- write(H), write(, ), musicasAlbumT(T).
 
 artistasGenero(Especifico):- 
 	findall(Artista,
