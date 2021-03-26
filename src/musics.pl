@@ -11,6 +11,10 @@ music('Ei olha o som', [forro, romantico], 'Uma Nova História').
 music('Vai esperar', [forro, romantico], 'Uma Nova História').
 music('Monotonia', [forro, romantico], 'Paradise').
 music('Poderosa', [forro, romantico], 'Paradise').
+music('DNA', [hip hop], 'Damn').
+music('Humble', [hip hop], 'Damn').
+music('Yah', [hip hop], 'Damn').
+music('Ivy', [romantic], 'Blonde').
 
 addMusic:-
     read_atom_with_message('Nome', MusicName),
