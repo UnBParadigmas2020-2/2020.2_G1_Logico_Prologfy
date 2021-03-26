@@ -13,6 +13,18 @@ albunsArtista:-
 		;  write(' tem os álbuns '), write_ln(AlbumList)
 	).
 
+albunsGenero:-
+	read_atom_with_message('Insira o nome do gênero', GeneroToFind),
+	findall(Album, (music(_, Genero, Album), percorreLista(GeneroToFind, Genero))
+		,AlbumList),
+	sort(AlbumList, AlbumListSort),
+	write('O genero '), 
+	write(GeneroToFind), 
+	(length(AlbumListSort, 0) 
+		-> write(' não possui álbuns cadastrados.')
+		;  write(' tem os álbuns '), write_ln(AlbumListSort)
+	).
+
 musicasGenero:-
 	read_atom_with_message('Insira o nome do gênero', GeneroToFind),
 	findall(Musica, (music(Musica, Genero, _), percorreLista(GeneroToFind, Genero))
