@@ -1,5 +1,5 @@
 FROM swipl
 
-COPY . /app
+COPY . ./
 
-CMD ["swipl", "/app/prologfy.pl"]
+CMD ["swipl", "/src/prologfy.pl"]
