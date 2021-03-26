@@ -1,5 +1,9 @@
-read_atom(Message, Result) :- 
-    format('~w ? ',[Message]),
+read_atom(Result) :- 
+    read_string(user, "\n", "\r", _, Value),
+    string_to_atom(Value, Result).
+
+read_atom_with_message(Message, Result) :- 
+    format('~w : ',[Message]),
     read_string(user, "\n", "\r", _, Value),
     string_to_atom(Value, Result).
 
