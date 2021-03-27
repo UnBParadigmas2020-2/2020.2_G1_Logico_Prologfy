@@ -26,9 +26,9 @@ handle_album:-
         [
             "1" : addAlbum(),
             "2" : removeAlbum(),
-            "3" : main
+            "3" : menu
         ],
-        main
+        menu
     ).
 
 handle_music:-
@@ -44,9 +44,9 @@ handle_music:-
         [
             "1" : addMusic(),
             "2" : removeMusic(),
-            "3" : main
+            "3" : menu
         ],
-        main
+        menu
     ).
 
 handle_search:-
@@ -70,16 +70,29 @@ handle_search:-
             "4" : musicasGenero(),
             "5" : albunsArtista(),
             "6" : albunsGenero(),
-            "7" : main
+            "7" : menu
         ],
-        main
+        menu
     ).
 
 exit:-
+    delete_file('db/albuns.csv'),
+    delete_file('db/musics.csv'),
+    findall(row(Music, Gen, Ano), music(Music,Gen, Ano) ,MusicList), 
+        csv_write_file('db/musics.csv', MusicList),
+    findall(row(Nome, Art, Ano), album(Nome, Art, Ano) ,AlbumList), 
+        csv_write_file('db/albuns.csv', AlbumList),
     write_ln('Até mais!!'),
     halt(0).
 
 main:-
+    csv_read_file('db/musics.csv', RowsMusic, [functor(music), arity(3)]),
+        maplist(assert, RowsMusic),
+    csv_read_file('db/albuns.csv', RowsAlbuns, [functor(album), arity(3)]),
+        maplist(assert, RowsAlbuns),
+    menu().
+
+menu:-
     write_ln("\n\n"),
     write_ln('====================== Prologfy ======================'),
     write_ln('[1] - Inserir ou remover músicas'),
@@ -96,5 +109,5 @@ main:-
             "3" : handle_search(),
             "4" : exit()
         ],
-        main
+        menu
     ).
