@@ -27,6 +27,16 @@ albunsGenero:-
 		;  write(' tem os álbuns '), write_ln(AlbumListSort)
 	).
 
+albunsPorAno:-
+	read_atom_with_message('Insira o ano de lançamento', YearToFind),
+	findall((Name), album(Name, _, YearToFind), AlbumList),
+	write('O ano de lançamento '),
+	write(YearToFind),
+	(length(AlbumListSort, 0) 
+		-> write(' não possui álbuns cadastrados.')
+		;  write(' contém os álbuns: '), write_ln(AlbumListSort)
+	).
+
 musicasGenero:-
 	read_atom_with_message('Insira o nome do gênero', GeneroToFind),
 	write('\e[H\e[2J'),
