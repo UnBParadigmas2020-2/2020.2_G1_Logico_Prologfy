@@ -14,37 +14,50 @@ switch(X, [Val:Goal|Cases], ReturnTo) :-
     ).
 
 handle_album:-
+    write('\e[H\e[2J'),
+    write_ln('====================== Prologfy ======================'),
     write_ln('[1] - Inserir álbum'),
     write_ln('[2] - Remover álbum'),
+    write_ln('[3] - Voltar para menu inicial'),
+    write_ln('====================== Prologfy ======================'),
     read_string(user, "\n", "\r", _, Option),
     switch(
         Option, 
         [
             "1" : addAlbum(),
-            "2" : removeAlbum()
+            "2" : removeAlbum(),
+            "3" : main
         ],
         main
     ).
 
 handle_music:-
+    write('\e[H\e[2J'),
+    write_ln('====================== Prologfy ======================'),
     write_ln('[1] - Inserir música'),
     write_ln('[2] - Remover música'),
+    write_ln('[3] - Voltar para menu inicial'),
+    write_ln('====================== Prologfy ======================'),
     read_string(user, "\n", "\r", _, Option),
     switch(
         Option, 
         [
             "1" : addMusic(),
-            "2" : removeMusic()
+            "2" : removeMusic(),
+            "3" : main
         ],
         main
     ).
 
 handle_search:-
+    write('\e[H\e[2J'),
+    write_ln('====================== Prologfy ======================'),
     write_ln('[1] - Buscar músicas de um artista'),
     write_ln('[2] - Buscar músicas de um álbum'),
     write_ln('[3] - Buscar músicas de um ano'),
-    write_ln('[4] - Buscar gêneros musicais de um artista'),
-    write_ln('[5] - Buscar músicas por gênero'),
+    write_ln('[4] - Buscar músicas por gênero'),
+    write_ln('[5] - Voltar para menu inicial'),
+    write_ln('====================== Prologfy ======================'),
     read_string(user, "\n", "\r", _, Option),
     switch(
         Option, 
@@ -52,8 +65,8 @@ handle_search:-
             "1" : musicasArtista(),
             "2" : musicasAlbum(),
             "3" : musicasAno(),
-            "4" : artistasGenero(),
-            "5" : musicasGenero()
+            "4" : musicasGenero(),
+            "5" : main
         ],
         main
     ).
