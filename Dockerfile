@@ -1,5 +1,8 @@
 FROM swipl
 
-COPY . ./
+WORKDIR /app
 
-CMD ["swipl", "/main.pl"]
+ADD /src /app/src
+ADD /main.pl /app/main.pl 
+
+CMD ["swipl", "/app/main.pl"]

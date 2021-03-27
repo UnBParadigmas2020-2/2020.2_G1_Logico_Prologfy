@@ -1,8 +1,11 @@
+DIR := ${CURDIR}
+
 build:
 	docker build -t prolog .
 
 run:
-	docker run -it prolog
+	docker run --rm -v $(pwd)/db:/app/db -it prolog 
 
 build-run:
-	docker build -t prolog . && docker run -it prolog
+	docker build -t prolog . && \
+	docker run --rm --mount type=bind,source=$(DIR)/db,target=/app/db -it prolog
