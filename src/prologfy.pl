@@ -32,9 +32,9 @@ albunsPorAno:-
 	findall((Name), album(Name, _, YearToFind), AlbumList),
 	write('O ano de lançamento '),
 	write(YearToFind),
-	(length(AlbumListSort, 0) 
+	(length(AlbumList, 0) 
 		-> write(' não possui álbuns cadastrados.')
-		;  write(' contém os álbuns: '), write_ln(AlbumListSort)
+		;  write(' contém os álbuns: '), write_ln(AlbumList)
 	).
 
 musicasGenero:-
