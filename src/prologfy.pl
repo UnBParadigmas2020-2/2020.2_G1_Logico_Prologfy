@@ -4,17 +4,19 @@
 
 albunsArtista:-
 	read_atom_with_message('Insira o nome do artista', AlbumArtista),
+	write('\e[H\e[2J'),
 	findall(Album, (album(Album, Artista, _), percorreLista(AlbumArtista, Artista))
 		,AlbumList),
-	write('O artista '), 
+	write('O artista "'), 
 	write(AlbumArtista), 
 	(length(AlbumList, 0) 
-		-> write(' não possui álbuns cadastrados.')
-		;  write(' tem os álbuns '), write_ln(AlbumList)
+		-> write_ln('" não possui álbuns cadastrados.')
+		;  write('" tem os álbuns '), write_ln(AlbumList)
 	).
 
 albunsGenero:-
 	read_atom_with_message('Insira o nome do gênero', GeneroToFind),
+	write('\e[H\e[2J'),
 	findall(Album, (music(_, Genero, Album), percorreLista(GeneroToFind, Genero))
 		,AlbumList),
 	sort(AlbumList, AlbumListSort),
@@ -27,21 +29,29 @@ albunsGenero:-
 
 musicasGenero:-
 	read_atom_with_message('Insira o nome do gênero', GeneroToFind),
+	write('\e[H\e[2J'),
 	findall(Musica, (music(Musica, Genero, _), percorreLista(GeneroToFind, Genero))
 		,MusicList),
-	write('O genero '), 
+	write('O genero "'), 
 	write(GeneroToFind), 
 	(length(MusicList, 0) 
-		-> write(' não possui músicas cadastradas.')
-		;  write(' tem as musicas '), write_ln(MusicList)
+		-> write_ln('" não possui músicas cadastradas.')
+		;  write('" tem as musicas '), write_ln(MusicList)
 	).
 
 musicasArtista:-
 	read_atom_with_message('Insira o nome do artista', Artista),
-	findall(Album, album(Album, Artista, _), MusicList),
-	(length(MusicList, 0)
-		-> write('Não possui álbuns cadastrados'), fail
-		; albunsArtista(MusicList)
+	write('\e[H\e[2J'),
+	findall(Album, album(Album, Artista, _), AlbumList),
+	(length(AlbumList, 0)
+		-> write('O artista "'),
+		   write(Artista),
+		   write_ln('" não possui álbuns cadastrados'),
+		   main
+		; write('O artista "'),
+		  write(Artista),
+		  write_ln('" possui as musicas:'),
+		  albunsArtista(AlbumList)
 	).
 
 albunsArtista([]). 
@@ -54,28 +64,41 @@ albunsArtista(_):- fail .
 
 musicasAno:-
 	read_atom_with_message('Insira o ano', Ano),
+	write('\e[H\e[2J'),
 	findall(Album, album(Album, _, Ano), AlbumList),
-	albunsArtista(AlbumList).
+	write('O Ano "'), 
+	write(Ano),
+	(length(AlbumList, 0)
+		-> write_ln('" não possui musicas cadastradas.'),
+		   main
+		; write('" teve o(s) album(s) '),
+		  write(AlbumList),
+		  write(' que'),
+		  albunsArtista(AlbumList)
+	).
+
 
 musicasAlbum:-
 	read_atom_with_message('Insira o nome do álbum', Album),
+	write('\e[H\e[2J'),
 	findall(Musica, music(Musica, _, Album), MusicList),
-	write('O Album '), 
+	write('O Album "'), 
 	write(Album), 
 	(length(MusicList, 0) 
-		-> write(' não possui músicas cadastradas.')
-		;  write(' tem as musicas '), write_ln(MusicList)
+		-> write_ln('" não possui músicas cadastradas.')
+		;  write('" tem as musicas '), 
+		   write_ln(MusicList)
 	).
 
-artistasGenero:- 
-	read_atom_with_message('Insira o nome do gênero', Especifico),
-	findall(Artista,
-		(artista(Artista, Generos, _),percorreLista(Especifico, Generos))
-		,Lista),
-	write('Artista '), 
-	write(Lista), 
-	write(' tem musicas do genero '),
-	write(Especifico).
+%artistasGenero:- 
+%	read_atom_with_message('Insira o nome do gênero', Especifico),
+%	findall(Artista,
+%		(artista(Artista, Generos, _),percorreLista(Especifico, Generos))
+%		,Lista),
+%	write('Artista '), 
+%	write(Lista), 
+%	write(' tem musicas do genero '),
+%	write(Especifico).
 
 printList([]).	
 printList([H|T]):- write(H), write_ln(','), printList(T).
