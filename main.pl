@@ -26,7 +26,7 @@ handle_album:-
         [
             "1" : addAlbum(),
             "2" : removeAlbum(),
-            "3" : menu
+            "3" : write('\e[H\e[2J'), menu
         ],
         menu
     ).
@@ -44,7 +44,7 @@ handle_music:-
         [
             "1" : addMusic(),
             "2" : removeMusic(),
-            "3" : menu
+            "3" : write('\e[H\e[2J'), menu
         ],
         menu
     ).
@@ -70,7 +70,7 @@ handle_search:-
             "4" : musicasGenero(),
             "5" : albunsArtista(),
             "6" : albunsGenero(),
-            "7" : menu
+            "7" : write('\e[H\e[2J'), menu
         ],
         menu
     ).

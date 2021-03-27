@@ -11,7 +11,8 @@ albunsArtista:-
 	write(AlbumArtista), 
 	(length(AlbumList, 0) 
 		-> write_ln('" não possui álbuns cadastrados.')
-		;  write('" tem os álbuns '), write_ln(AlbumList)
+		;  write_ln('" tem os álbuns:'),
+		   printList(AlbumList)
 	).
 
 albunsGenero:-
@@ -20,11 +21,12 @@ albunsGenero:-
 	findall(Album, music(_, GeneroToFind, Album)
 		,AlbumList),
 	sort(AlbumList, AlbumListSort),
-	write('O genero '), 
+	write('O genero "'), 
 	write(GeneroToFind), 
 	(length(AlbumListSort, 0) 
-		-> write(' não possui álbuns cadastrados.')
-		;  write(' tem os álbuns '), write_ln(AlbumListSort)
+		-> write('" não possui álbuns cadastrados.')
+		;  write_ln('" tem os álbuns: '),
+		   printList(AlbumListSort)
 	).
 
 albunsPorAno:-
@@ -45,7 +47,8 @@ musicasGenero:-
 	write(GeneroToFind), 
 	(length(MusicList, 0) 
 		-> write_ln('" não possui músicas cadastradas.')
-		;  write('" tem as musicas '), write_ln(MusicList)
+		;  write_ln('" tem as musicas:'), 
+		   printList(MusicList)
 	).
 
 musicasArtista:-
@@ -55,18 +58,24 @@ musicasArtista:-
 	(length(AlbumList, 0)
 		-> write('O artista "'),
 		   write(Artista),
-		   write_ln('" não possui álbuns cadastrados'),
+		   write_ln('" não esta cadastrado(a).'),
 		   menu
 		; write('O artista "'),
 		  write(Artista),
-		  write_ln('" possui as musicas:'),
+		  write_ln('" possui o(s) album(s):'),
 		  albunsArtista(AlbumList)
 	).
 
 albunsArtista([]). 
 albunsArtista([H|T]):- 
+	write('"'),
+	write(H),
 	findall(Musica, music(Musica, _, H), MusicList),
-	printList(MusicList),
+	(length(MusicList, 0)
+		-> write_ln('" que não possui musicas cadastradas.'),
+		   menu
+		; write_ln('" contem as musicas:'),
+		printList(MusicList)),
 	write_ln(''),
 	albunsArtista(T).
 albunsArtista(_):- fail .
@@ -94,14 +103,15 @@ musicasAlbum:-
 	write('O Album "'), 
 	write(Album), 
 	(length(MusicList, 0) 
-		-> write_ln('" não possui músicas cadastradas.')
-		;  write('" tem as musicas '), 
-		   write_ln(MusicList)
+		-> write_ln('" não tem musicas cadastradas.')
+		;  write_ln('" tem as musicas:'), 
+%		   write_ln(MusicList)
+		   printList(MusicList)
 	).
 
 
 printList([]).	
-printList([H|T]):- write(H), write_ln(','), printList(T).
+printList([H|T]):- write('\t'), write(H), write_ln(';'), printList(T).
 
 percorreLista(Especifico, H):- Especifico == H.
 percorreLista(Especifico, [H|_]):- Especifico == H.
