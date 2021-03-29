@@ -29,6 +29,7 @@ Insira um manual ou um script para auxiliar ainda mais.
 Para utilizar o prologfy é necessário que o usuário ou tenha um compilador prolog, ou tenha o docker instalado em seu computador. 
 Caso o usuário opte pelo compilador recomendamos o SWI-Prolog, o seu download pode ser feito através do seguinte link:
 [SWI-Prolog](https://www.swi-prolog.org/Download.html)
+
 Após instalação do compilador caso o usuário esteja no linux basta abrir o terminal, clonar o repositório e executar os seguintes comandos:
     
     $ cd 2020.2_G1_Logico_Prologfy
