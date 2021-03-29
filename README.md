@@ -17,14 +17,35 @@
 O prologfy é um projeto implementado na linguagem prolog que faz recomendações de músicas e albúns. Além disso também é possível buscar por artistas de um determinado genêro, buscar musícas por ano, inserir ou remover álbuns e músicas da nossa base de dados, e salvar esses dados de forma consistente em um arquivo csv.
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+
+![](./assets/1.png)
+
+![](./assets/2.png)
+
+![](./assets/3.png)
 
 ## Instalação 
+
 **Linguagens**: Prolog<br>
 
-Plataforma SWI-Prolog ou algum outro compilador prolog.
+Plataforma SWI-Prolog ou algum outro compilador prolog ou Docker.
 
-Optativo: Docker.
+### Para rodar com docker:
+
+Após instalar o docker, execute o comando
+
+    $ (sudo) make build-run
+
+Esse comando irá buildar e executar o container, montando um volume que ficará responsável por atualizar o csv.
+
+### Sem docker:
+
+Você também pode rodar o projeto sem docker, caso tenha o swi-prolog instalado. Para isso apenas execute o projeto com
+
+    $ swipl main.pl
+
+E rode o projeto de acordo com as instruções de uso.
+
 
 ## Uso 
 
@@ -53,11 +74,15 @@ Agora caso o usuário opte pela execução via Docker, basta clonar o repositór
     ? main.
     
 E navegar pelas opções de menu da aplicação.
+
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
+
+O vídeo se encontra na pasta `assets/video.mp4`.
 
 ## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas a seguir.
+
+Os arquivos .csv que estao na pasta db/ funcionam como banco de dados persistente da aplicação. Ao executar o projeto pela primeira vez, eles serão carregados em memória, inserindo os funtores automaticamente. Da mesma forma, ao finalizar a execução do projeto pelo menu, os arquivos csv serão atualizados automaticamente de acordo com as alterações realizadas durante o uso do Prologfy.
 
 ## Fontes
+
 Caso utilize materiais de terceiros, referencie-os adequadamente.
