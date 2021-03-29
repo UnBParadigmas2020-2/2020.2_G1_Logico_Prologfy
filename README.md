@@ -14,19 +14,45 @@
 
 ## Sobre
 
-Descreva o seu projeto em linhas gerais. 
+O prologfy é um projeto implementado na linguagem prolog que faz recomendações de músicas e albúns. Além disso também é possível buscar por artistas de um determinado genêro, buscar musícas por ano, inserir ou remover álbuns e músicas da nossa base de dados, e salvar esses dados de forma consistente em um arquivo csv.
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
 ## Instalação 
 **Linguagens**: Prolog<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
+
+Plataforma SWI-Prolog ou algum outro compilador prolog.
+
+Optativo: Docker.
 
 ## Uso 
-Explique como usar seu projeto, caso haja algum passo a passo após o comando de execução.
 
+Para utilizar o prologfy é necessário que o usuário ou tenha um compilador prolog, ou tenha o docker instalado em seu computador. 
+Caso o usuário opte pelo compilador recomendamos o SWI-Prolog, o seu download pode ser feito através do seguinte link:
+[SWI-Prolog](https://www.swi-prolog.org/Download.html)
+
+Após instalação do compilador caso o usuário esteja no linux basta abrir o terminal, clonar o repositório e executar os seguintes comandos:
+    
+    $ cd 2020.2_G1_Logico_Prologfy
+    
+    $ swipl
+    
+    ? [main].
+    
+    ? main.
+
+E navegar pelas opções de menu da aplicação.
+
+Agora caso o usuário opte pela execução via Docker, basta clonar o repositório e executar os comandos:
+    
+    $ cd 2020.2_G1_Logico_Prologfy
+    
+    $ sudo make build-run
+    
+    ? main.
+    
+E navegar pelas opções de menu da aplicação.
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
 
