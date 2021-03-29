@@ -21,8 +21,10 @@ Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcioname
 
 ## Instalação 
 **Linguagens**: Prolog<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
+
+Plataforma SWI-Prolog ou algum outro compilador prolog.
+
+Optativo: Docker.
 
 ## Uso 
 
