@@ -44,7 +44,9 @@ Após instalação do compilador caso o usuário esteja no linux basta abrir o t
 
 E navegar pelas opções de menu da aplicação.
 
-Agora caso o usuário opte pela execução via Docker, basta executar o comando:
+Agora caso o usuário opte pela execução via Docker, basta clonar o repositório e executar os comandos:
+    
+    $ cd 2020.2_G1_Logico_Prologfy
     
     $ sudo make build-run
     
