@@ -86,4 +86,5 @@ Os arquivos .csv que estao na pasta db/ funcionam como banco de dados persistent
 ## Fontes
 
 Swi-prolog Documentation: https://www.swi-prolog.org/pldoc/doc_for?object=manual
+
 SQL x PROLOG, Marcelo Gonçalves Rego, 1998
